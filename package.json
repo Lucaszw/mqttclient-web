@@ -1,8 +1,8 @@
 {
-  "name": "@mqttclient/node",
+  "name": "@mqttclient/web",
   "version": "0.0.4",
   "description": "Node Mqtt Client",
-  "main": "NodeMqttClient.js",
+  "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,23 @@
     "@mqttclient/mqtt-messages": "0.0.2",
     "backbone": "^1.3.3",
     "crossroads": "^0.12.2",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
-    "mqtt": "^2.13.0"
-  }
+    "paho-mqtt": "^1.0.3"
+  },
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucaszw/mqttclient-web.git"
+  },
+  "keywords": [
+    "MqttClient",
+    "Web"
+  ],
+  "bugs": {
+    "url": "https://github.com/Lucaszw/mqttclient-web/issues"
+  },
+  "homepage": "https://github.com/Lucaszw/mqttclient-web#readme"
 }

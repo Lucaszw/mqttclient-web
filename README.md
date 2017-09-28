@@ -1,2 +1,2 @@
 # mqttclient-node
-Node Mqtt Client
+Web Mqtt Client
