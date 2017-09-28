@@ -122,4 +122,4 @@ class MQTTClient {
 
 }
 
-export default MQTTClient;
+module.exports = MQTTClient;

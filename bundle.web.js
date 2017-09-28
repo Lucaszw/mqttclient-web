@@ -1,4 +1,4 @@
-module.exports =
+var MQTTClient =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
