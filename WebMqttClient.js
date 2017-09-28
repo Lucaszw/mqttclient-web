@@ -121,3 +121,5 @@ class MQTTClient {
   }
 
 }
+
+module.exports = MQTTClient;
