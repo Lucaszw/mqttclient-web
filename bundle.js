@@ -93,8 +93,10 @@ module.exports = g;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const _ = __webpack_require__(2);
 const Backbone = __webpack_require__(4);
 const crossroads = __webpack_require__(7);
@@ -219,7 +221,7 @@ class MQTTClient {
 
 }
 
-module.exports = MQTTClient;
+/* harmony default export */ __webpack_exports__["default"] = (MQTTClient);
 
 
 /***/ }),
