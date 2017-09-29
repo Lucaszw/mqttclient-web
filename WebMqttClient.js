@@ -104,7 +104,7 @@ class MQTTClient {
 
   // ** Initializers **
   Client() {
-    const client = new Paho.MQTT.Client("localhost", 8083, this.clientId);
+    const client = new Paho.Client("localhost", 8083, this.clientId);
     client.onMessageArrived = this.onMessageArrived.bind(this);
     client.onConnectionLost = this.onConnectionLost.bind(this);
     client.connect({onSuccess: this.onConnect.bind(this)});
@@ -112,7 +112,7 @@ class MQTTClient {
   }
 
   Message(topic, msg, retain=false, qos=0, dup=false){
-    const message = new Paho.MQTT.Message(JSON.stringify(msg));
+    const message = new Paho.Message(JSON.stringify(msg));
     message.destinationName = topic;
     message.retain = retain;
     message.qos = qos;

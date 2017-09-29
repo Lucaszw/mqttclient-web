@@ -14,7 +14,7 @@
     "crossroads": "^0.12.2",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
-    "paho-mqtt": "^1.0.3"
+    "paho-mqtt": "git+https://github.com/AngelKyriako/paho.mqtt.javascript.git#master"
   },
   "devDependencies": {
     "webpack": "^3.6.0"

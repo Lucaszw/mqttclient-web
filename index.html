@@ -4,10 +4,21 @@
 <head>
   <meta charset="utf-8">
   <title>Import Test</title>
-  <script src="bundle.js"></script>
+  <script src="bundle.web.js"></script>
 </head>
 
 <body>
-  
 </body>
+<script>
+class UIPluginLauncher extends MQTTClient {
+  constructor() {
+    super("UIPluginLauncher");
+    this.listen();
+  }
+  listen() {
+    console.log("Listening for mqtt messages...");
+  }
+}
+let uiPluginLauncher = new UIPluginLauncher();
+</script>
 </html>
