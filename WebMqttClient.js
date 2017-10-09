@@ -1,12 +1,14 @@
-const _ = require("lodash");
-const Backbone = require("Backbone");
-const crossroads = require("crossroads");
-const MqttMessages = require("@mqttclient/mqtt-messages");
-const Paho = require("paho-mqtt");
-
 const IsJsonString = (str) => {
   try { JSON.parse(str);} catch (e) {return false;}
   return true;
+}
+
+const decamelize = (str, sep='-') => {
+  // https://github.com/sindresorhus/decamelize
+  return str
+    .replace(/([a-z\d])([A-Z])/g, '$1' + sep + '$2')
+    .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1' + sep + '$2')
+    .toLowerCase();
 }
 
 class MQTTClient {
@@ -69,9 +71,11 @@ class MQTTClient {
     setTimeout(()=>{this.reconnect()}, 1000);
   }
   // ** Getters and Setters **
+  get connected() {
+    return this.client.isConnected();
+  }
   get name() {
-    return encodeURI(
-      this.constructor.name.split(/(?=[A-Z])/).join('-').toLowerCase());
+    return encodeURI(decamelize(this.constructor.name));
   }
 
   get channel() {
