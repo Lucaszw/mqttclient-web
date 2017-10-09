@@ -1,6 +1,6 @@
 {
   "name": "@mqttclient/web",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Node Mqtt Client",
   "main": "bundle.js",
   "scripts": {
