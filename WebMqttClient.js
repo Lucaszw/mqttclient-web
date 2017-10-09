@@ -26,9 +26,10 @@ class MQTTClient {
 
   /* Old Route Methods (Depricating) */
   addGetRoute(topic, method) {
+    console.error("<WebMqttClient>:: addGetRoute depricated ", topic, method);
     // Replace content within curly brackets with "+" wildcard
-    this.addRoute(topic, method);
-    this.subscriptions.push(topic.replace(/\{(.+?)\}/g, "+"));
+    // this.addRoute(topic, method);
+    // this.subscriptions.push(topic.replace(/\{(.+?)\}/g, "+"));
   }
 
   addPostRoute(topic, event, retain=false, qos=0, dup=false){
@@ -90,9 +91,10 @@ class MQTTClient {
   // ** Event Handlers **
   onConnect() {
     // MQTT Callback after establishing brocker connection
-    console.log(`Subscriptions for ${this.name}:::`);
-    console.log(this.subscriptions);
-    for (var s of this.subscriptions) this.client.subscribe(s);
+    // console.log(`Subscriptions for ${this.name}:::`);
+    // console.log(this.subscriptions);
+    // for (var s of this.subscriptions) this.client.subscribe(s);
+    this.listen();
   }
   onConnectionLost(status) {
     console.error(`Connection lost for ${this.name}`);
