@@ -1,3 +1,9 @@
+const lo = require("lodash");
+const Backbone = require("Backbone");
+const crossroads = require("crossroads");
+const MqttMessages = require("@mqttclient/mqtt-messages");
+const Paho = require("paho-mqtt");
+
 const IsJsonString = (str) => {
   try { JSON.parse(str);} catch (e) {return false;}
   return true;
@@ -13,9 +19,9 @@ const decamelize = (str, sep='-') => {
 
 class MQTTClient {
   constructor(name="web-ui", base="microdrop") {
-    _.extend(this, Backbone.Events);
-    _.extend(this, crossroads.create());
-    _.extend(this, MqttMessages);
+    lo.extend(this, Backbone.Events);
+    lo.extend(this, crossroads.create());
+    lo.extend(this, MqttMessages);
     this.base = base;
     this.client = this.Client();
     this.subscriptions = new Array();
@@ -27,9 +33,6 @@ class MQTTClient {
   /* Old Route Methods (Depricating) */
   addGetRoute(topic, method) {
     console.error("<WebMqttClient>:: addGetRoute depricated ", topic, method);
-    // Replace content within curly brackets with "+" wildcard
-    // this.addRoute(topic, method);
-    // this.subscriptions.push(topic.replace(/\{(.+?)\}/g, "+"));
   }
 
   addPostRoute(topic, event, retain=false, qos=0, dup=false){
@@ -90,11 +93,8 @@ class MQTTClient {
 
   // ** Event Handlers **
   onConnect() {
-    // MQTT Callback after establishing brocker connection
-    // console.log(`Subscriptions for ${this.name}:::`);
-    // console.log(this.subscriptions);
-    // for (var s of this.subscriptions) this.client.subscribe(s);
-    this.listen();
+    if (this.listen)
+      this.listen();
   }
   onConnectionLost(status) {
     console.error(`Connection lost for ${this.name}`);

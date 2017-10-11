@@ -1,4 +1,7 @@
+// Build by running: "webpack" (not "webpack .")
+
 var config = {
+  context: __dirname,
   entry: './WebMqttClient.js',
   output: {
     filename: 'bundle.js',
@@ -18,4 +21,4 @@ var webConfig = {
   }
 };
 
-module.exports = [ config, webConfig ];
+module.exports = [config, webConfig];
