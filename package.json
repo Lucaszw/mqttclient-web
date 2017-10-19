@@ -2,7 +2,7 @@
   "name": "@mqttclient/web",
   "version": "0.0.15",
   "description": "Node Mqtt Client",
-  "main": "bundle.js",
+  "main": "WebMqttClient.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

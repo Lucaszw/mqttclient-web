@@ -1,4 +1,4 @@
-module.exports =
+var MQTTClient =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -130,9 +130,6 @@ class MQTTClient {
   /* Old Route Methods (Depricating) */
   addGetRoute(topic, method) {
     console.error("<WebMqttClient>:: addGetRoute depricated ", topic, method);
-    // Replace content within curly brackets with "+" wildcard
-    // this.addRoute(topic, method);
-    // this.subscriptions.push(topic.replace(/\{(.+?)\}/g, "+"));
   }
 
   addPostRoute(topic, event, retain=false, qos=0, dup=false){
@@ -32288,20 +32285,23 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*jslint onevar:true, undef:true, newcap:true,
 const MqttMessages = new Object();
 
 MqttMessages.addSubscription = function(channel, method){
-  this.addRoute(channel, method);
+  const route = this.addRoute(channel, method);
   const subscription = channel.replace(/\{(.+?)\}/g, "+");
+
   // Ensure client is connected before continuing
   if (!this.connected) {
     console.error(`<MqttMessages>:: ${this.name} ::Cannot add subscription. Client not connected`);
     return subscription;
   }
+
   // Ensure subscription doesn't already exist
   if (this.subscriptions.includes(subscription))
     return subscription;
+
   // If the client is ready, then subscribe immediately, otherwise add to list
   this.subscriptions.push(subscription);
   this.client.subscribe(subscription);
-  return subscription;
+  return route;
 }
 MqttMessages.addBinding = function(channel, event, retain=false, qos=0, dup=false){
   return this.on(event, (d) => this.sendMessage(channel, d, retain, qos, dup));
