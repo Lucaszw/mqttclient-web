@@ -56,3 +56,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# other
+web-mqtt.web.js
