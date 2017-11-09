@@ -104,7 +104,8 @@ class MQTTClient {
   onMessageArrived(msg) {
     const receiver = this.name + " : " + msg.destinationName;
     const payloadIsValid = IsJsonString(msg.payloadString);
-    if (payloadIsValid)  this.parse(msg.destinationName, [msg.payloadString]);
+    const m = JSON.parse(msg.payloadString);
+    if (payloadIsValid)  this.parse(msg.destinationName, [m]);
     if (!payloadIsValid) console.error("Could not parse message for " + receiver);
   }
 
