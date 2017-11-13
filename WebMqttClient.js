@@ -121,7 +121,7 @@ class MQTTClient {
   Message(topic, msg, retain=false, qos=0, dup=false){
     const message = new Paho.Message(JSON.stringify(msg));
     message.destinationName = topic;
-    message.retain = retain;
+    message.retained = retain;
     message.qos = qos;
     message.duplicate = dup;
     return message;
